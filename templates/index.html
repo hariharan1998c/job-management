@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Management Interface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="logo.png" alt="Logo">
+                </div>
+                <ul>
+                    <li><a href="/" class="active">Home</a></li>
+                    <li><a href="/create_job">Create Jobs</a></li>
+                    <li><a href="#">Find Talents</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+                <button class="create-jobs-btn">Create Jobs</button>
+            </nav>
+        </header>
+
+        <main>
+            <div class="filters">
+                <input type="text" placeholder="Search by Job Title, Role">
+                <select>
+                    <option>Preferred Location</option>
+                </select>
+                <select>
+                    <option>Job Type</option>
+                </select>
+                <div class="salary-range">
+                    <span>₹50k</span>
+                    <input type="range" min="50000" max="80000">
+                    <span>₹80k</span>
+                </div>
+            </div>
+
+            <div class="job-listings">
+                {% set logos = ['logo1.png', 'logo2.png', 'logo3.png'] %}
+                
+                {% for job in jobs %}
+                <div class="job-card">
+                    <div class="job-header">
+                        <img src="static/{{ logos[loop.index0 % 3] }}" alt="Company Logo" class="company-logo">
+                        <div class="job-details">
+                            <h3>{{ job[1] }}</h3>
+                            <p>{{ job[2] }}</p>
+                        </div>
+                        <span class="job-age">24h Ago</span>
+                    </div>
+                    <div class="job-meta">
+                        <span>{{ job[3] }}</span>
+                        <span>{{ job[4] }}</span>
+                        <span>{{ job[5] }}</span>
+                    </div>
+                    <button class="apply-btn">Apply Now</button>
+                </div>
+                {% endfor %}
+            </div>
+            
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
