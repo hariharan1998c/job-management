@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Job Opening</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="create-job-container">
+        <form method="POST" action="{{ url_for('create_job') }}">
+            <h2>Create Job Opening</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="job_title">Job Title</label>
+                    <input type="text" id="job_title" name="job_title" required>
+                </div>
+                <div class="form-group">
+                    <label for="company_name">Company Name</label>
+                    <input type="text" id="company_name" name="company_name" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <select id="location" name="location" required>
+                        <option value="Chennai">Chennai</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="job_type">Job Type</label>
+                    <select id="job_type" name="job_type" required>
+                        <option value="Full Time">Full Time</option>
+                        <option value="Part Time">Part Time</option>
+                        <option value="Contract">Contract</option>
+                        <option value="Internship">Internship</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Salary Range</label>
+                    <div class="salary-input">
+                        <input type="text" name="salary_min" placeholder="From" required>
+                        <input type="text" name="salary_max" placeholder="To" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="application_deadline">Application Deadline</label>
+                    <input type="date" id="application_deadline" name="application_deadline" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="job_description">Job Description</label>
+                <textarea id="job_description" name="job_description" required></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="save-draft">Save Draft</button>
+                <button type="submit" class="publish">Publish</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
